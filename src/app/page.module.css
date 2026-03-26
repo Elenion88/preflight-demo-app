@@ -1,0 +1,149 @@
+/* === LANDING PAGE === */
+
+.hero {
+  /* BUG: Clashing colors — light text on dark indigo background */
+  background: #312e81;
+  color: #e0e7ff;
+  /* BUG: Inconsistent spacing — random padding */
+  padding: 32px 24px 8px 24px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-family: Georgia, serif;
+  /* BUG: No visual hierarchy — same weight/size vibe as h2 below */
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  font-size: 18px;
+  /* BUG: Inconsistent spacing — tiny margin after a large heading */
+  margin-bottom: 32px;
+  color: #c7d2fe;
+}
+
+.heroImage {
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin: 0 auto 24px;
+  border-radius: 8px;
+}
+
+.ctaButton {
+  display: inline-block;
+  /* BUG: Tiny touch target on mobile — only 24px tall */
+  padding: 4px 16px;
+  font-size: 12px;
+  min-height: 24px;
+  background: #1e1e2e;
+  color: #e0e7ff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Courier New", monospace;
+  margin-bottom: 32px;
+}
+
+/* === FEATURES GRID === */
+.featuresSection {
+  /* BUG: Inconsistent spacing — 8px top, 32px bottom */
+  padding: 8px 24px 32px;
+}
+
+.featuresSection h2 {
+  text-align: center;
+  font-size: 28px;
+  /* BUG: No visual hierarchy — similar to h1 weight */
+  font-weight: 400;
+  margin-bottom: 24px;
+  font-family: Georgia, serif;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* BUG: Cards overlap at tablet widths (~768px) — no responsive breakpoint,
+   3 columns just squeeze and text overflows */
+@media (max-width: 900px) and (min-width: 650px) {
+  .featuresGrid {
+    /* Still 3 columns at tablet — they'll overlap/overflow */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .featureCard {
+    /* Negative margin causes overlap */
+    margin-right: -12px;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 649px) {
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.featureCard {
+  background: white;
+  border-radius: 8px;
+  /* BUG: Inconsistent spacing — 8px padding on cards */
+  padding: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-width: 0;
+}
+
+.featureCard h3 {
+  font-size: 18px;
+  /* BUG: No visual hierarchy — same weight as other headings */
+  font-weight: 400;
+  margin-bottom: 8px;
+  font-family: Georgia, serif;
+  /* BUG: Clashing color */
+  color: #6366f1;
+  white-space: nowrap;
+}
+
+.featureCard p {
+  font-size: 14px;
+  color: #666;
+  /* BUG: Inconsistent spacing */
+  margin-bottom: 32px;
+}
+
+/* === CTA SECTION === */
+.ctaSection {
+  /* BUG: More clashing colors */
+  background: #312e81;
+  color: #e0e7ff;
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.ctaSection h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.ctaSection button {
+  /* BUG: Tiny touch target */
+  padding: 4px 12px;
+  min-height: 24px;
+  font-size: 12px;
+  background: #1e1e2e;
+  color: #e0e7ff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Courier New", monospace;
+}

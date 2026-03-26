@@ -1,0 +1,196 @@
+/* === DASHBOARD === */
+
+.dashboard {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.dashboardHeader h1 {
+  font-size: 28px;
+  font-weight: 400;
+  font-family: Georgia, serif;
+}
+
+.headerActions {
+  display: flex;
+  gap: 8px;
+  position: relative;
+}
+
+.actionButton {
+  padding: 8px 16px;
+  background: #1e1e2e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.exportButton {
+  background: #6366f1;
+  color: #e0e7ff;
+  font-family: "Courier New", monospace;
+}
+
+/* === DROPDOWN (z-index bug) === */
+.dropdownWrapper {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  /* BUG: z-index too low — renders behind the modal overlay (z-index: 999) */
+  z-index: 10;
+  padding: 4px;
+}
+
+.dropdown button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.dropdown button:hover {
+  background: #f0f0f0;
+}
+
+/* === METRIC CARDS === */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.metricCard {
+  background: white;
+  border-radius: 8px;
+  /* BUG: Inconsistent padding */
+  padding: 12px 16px 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.metricCard h3 {
+  /* BUG: Monospace labels */
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: 400;
+}
+
+.metricValue {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: Georgia, serif;
+  color: #1e1e2e;
+}
+
+.metricChange {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.metricChangeUp {
+  color: #34d399;
+}
+
+.metricChangeDown {
+  color: #f87171;
+}
+
+/* === DATA TABLE === */
+.tableWrapper {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.tableHeader h2 {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: Georgia, serif;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 12px 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #888;
+  font-family: "Courier New", monospace;
+  font-weight: 400;
+  border-bottom: 1px solid #eee;
+}
+
+.table td {
+  padding: 12px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.statusActive {
+  background: #d4edda;
+  color: #155724;
+}
+
+.statusPending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.statusInactive {
+  background: #f8d7da;
+  color: #721c24;
+}

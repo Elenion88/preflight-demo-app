@@ -1,0 +1,154 @@
+/* === GLOBAL RESET === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* BUG: Mixed fonts — intentionally ugly mishmash */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f5f5;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* BUG: Monospace randomly applied to labels */
+label,
+.mono-label {
+  font-family: "Courier New", Courier, monospace;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* === NAVBAR === */
+.navbar {
+  display: flex;
+  /* BUG: Misaligned navbar — items not vertically centered */
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 8px 24px;
+  background: #1e1e2e;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 56px;
+}
+
+.navbar-logo {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: Georgia, serif;
+  /* BUG: Logo pushed down, misaligned with nav links */
+  margin-top: 12px;
+  color: #818cf8;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  /* Nav links sit at flex-start, different vertical position than logo */
+  padding-top: 4px;
+}
+
+.navbar-links a {
+  color: #ccc;
+  font-size: 14px;
+  font-family: -apple-system, sans-serif;
+  transition: color 0.2s;
+  /* BUG: Tiny touch targets on mobile */
+  padding: 2px 4px;
+}
+
+.navbar-links a:hover {
+  color: #818cf8;
+}
+
+/* === MODAL OVERLAY (used on dashboard) === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /* BUG: z-index set high so dropdown renders behind it */
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  padding: 32px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+  margin-bottom: 16px;
+}
+
+.modal-content button {
+  margin-top: 16px;
+  padding: 8px 20px;
+  background: #1e1e2e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* === FIXED BOTTOM NAV (used on settings — causes save button overlap) === */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #1e1e2e;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 200;
+  /* Only show on narrow viewports */
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .bottom-nav {
+    display: flex;
+  }
+}
+
+.bottom-nav a {
+  color: #aaa;
+  font-size: 11px;
+  text-align: center;
+  /* BUG: Tiny touch target */
+  padding: 2px;
+  min-height: 24px;
+}
+
+.bottom-nav a.active {
+  color: #818cf8;
+}
