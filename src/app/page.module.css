@@ -148,9 +148,6 @@
   cursor: pointer;
   background: #6366f1;
   color: white;
-  /* BUG: Button is pushed 800px off-screen to the right */
-  position: relative;
-  left: 800px;
   transition: background 0.2s;
 }
 
