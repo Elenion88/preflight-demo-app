@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./page.module.css";
 
 const metrics = [
@@ -21,6 +21,17 @@ const tableData = [
 
 export default function DashboardPage() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className={styles.dashboard}>
@@ -28,7 +39,7 @@ export default function DashboardPage() {
         <h1>Dashboard</h1>
         <div className={styles.headerActions}>
           <button className={styles.addButton}>Add User</button>
-          <div className={styles.dropdownWrapper}>
+          <div className={styles.dropdownWrapper} ref={dropdownRef}>
             <button
               className={styles.exportButton}
               onClick={() => setDropdownOpen(!dropdownOpen)}
