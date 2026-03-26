@@ -25,7 +25,6 @@ export default function DashboardPage() {
 
   const handleExport = (format: string) => {
     setDropdownOpen(false);
-    // Show modal confirming export
     setModalOpen(true);
   };
 
@@ -47,15 +46,11 @@ export default function DashboardPage() {
             >
               Export ▾
             </button>
-            {/* BUG: Dropdown z-index (10) is lower than modal overlay (999),
-                so when both are open, dropdown renders behind modal */}
             {dropdownOpen && (
               <div className={styles.dropdown}>
                 <button onClick={() => handleExport("csv")}>Export CSV</button>
                 <button onClick={() => handleExport("pdf")}>Export PDF</button>
-                <button onClick={() => handleExport("xlsx")}>
-                  Export Excel
-                </button>
+                <button onClick={() => handleExport("xlsx")}>Export Excel</button>
               </div>
             )}
           </div>
@@ -120,15 +115,11 @@ export default function DashboardPage() {
         </table>
       </div>
 
-      {/* MODAL OVERLAY — its z-index (999) is higher than the dropdown (10) */}
       {modalOpen && (
         <div className="modal-overlay" onClick={() => setModalOpen(false)}>
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <h2>Add New User</h2>
-            <p>This is a placeholder modal. The export dropdown will render behind this overlay due to a z-index issue.</p>
+            <p>This is a placeholder modal.</p>
             <button onClick={() => setModalOpen(false)}>Close</button>
           </div>
         </div>

@@ -1,25 +1,22 @@
 /* === LANDING PAGE === */
 
 .hero {
-  /* BUG: Clashing colors — light text on dark indigo background */
   background: #312e81;
-  color: #e0e7ff;
-  /* BUG: Inconsistent spacing — random padding */
-  padding: 32px 24px 8px 24px;
+  color: white;
+  padding: 48px 24px;
   text-align: center;
 }
 
 .hero h1 {
   font-size: 48px;
-  font-family: Georgia, serif;
-  /* BUG: No visual hierarchy — same weight/size vibe as h2 below */
-  font-weight: 400;
-  margin-bottom: 8px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  /* BUG: Text is invisible — same color as background */
+  color: #312e81;
 }
 
 .hero p {
   font-size: 18px;
-  /* BUG: Inconsistent spacing — tiny margin after a large heading */
   margin-bottom: 32px;
   color: #c7d2fe;
 }
@@ -35,59 +32,37 @@
 
 .ctaButton {
   display: inline-block;
-  /* BUG: Tiny touch target on mobile — only 24px tall */
-  padding: 4px 16px;
-  font-size: 12px;
-  min-height: 24px;
-  background: #1e1e2e;
-  color: #e0e7ff;
+  padding: 12px 32px;
+  font-size: 16px;
+  background: #818cf8;
+  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  font-family: "Courier New", monospace;
-  margin-bottom: 32px;
+  font-weight: 600;
 }
 
 /* === FEATURES GRID === */
 .featuresSection {
-  /* BUG: Inconsistent spacing — 8px top, 32px bottom */
-  padding: 8px 24px 32px;
+  padding: 48px 24px;
 }
 
 .featuresSection h2 {
   text-align: center;
   font-size: 28px;
-  /* BUG: No visual hierarchy — similar to h1 weight */
-  font-weight: 400;
-  margin-bottom: 24px;
-  font-family: Georgia, serif;
+  font-weight: 700;
+  margin-bottom: 32px;
 }
 
 .featuresGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 20px;
   max-width: 960px;
   margin: 0 auto;
 }
 
-/* BUG: Cards overlap at tablet widths (~768px) — no responsive breakpoint,
-   3 columns just squeeze and text overflows */
-@media (max-width: 900px) and (min-width: 650px) {
-  .featuresGrid {
-    /* Still 3 columns at tablet — they'll overlap/overflow */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-  }
-
-  .featureCard {
-    /* Negative margin causes overlap */
-    margin-right: -12px;
-    overflow: visible;
-  }
-}
-
-@media (max-width: 649px) {
+@media (max-width: 768px) {
   .featuresGrid {
     grid-template-columns: 1fr;
   }
@@ -95,55 +70,54 @@
 
 .featureCard {
   background: white;
-  border-radius: 8px;
-  /* BUG: Inconsistent spacing — 8px padding on cards */
-  padding: 8px;
+  border-radius: 12px;
+  padding: 24px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  min-width: 0;
+  /* BUG: Cards are rotated 180 degrees — content is upside down */
+  transform: rotate(180deg);
 }
 
 .featureCard h3 {
   font-size: 18px;
-  /* BUG: No visual hierarchy — same weight as other headings */
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 8px;
-  font-family: Georgia, serif;
-  /* BUG: Clashing color */
-  color: #6366f1;
-  white-space: nowrap;
+  color: #1e1e2e;
 }
 
 .featureCard p {
   font-size: 14px;
   color: #666;
-  /* BUG: Inconsistent spacing */
-  margin-bottom: 32px;
+  line-height: 1.6;
 }
 
 /* === CTA SECTION === */
 .ctaSection {
-  /* BUG: More clashing colors */
   background: #312e81;
-  color: #e0e7ff;
+  color: white;
   text-align: center;
-  padding: 32px 24px;
+  padding: 48px 24px;
+  /* BUG: Section is completely hidden */
+  display: none;
 }
 
 .ctaSection h2 {
   font-size: 28px;
-  font-weight: 400;
-  margin-bottom: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.ctaSection p {
+  margin-bottom: 24px;
+  color: #c7d2fe;
 }
 
 .ctaSection button {
-  /* BUG: Tiny touch target */
-  padding: 4px 12px;
-  min-height: 24px;
-  font-size: 12px;
-  background: #1e1e2e;
-  color: #e0e7ff;
+  padding: 12px 32px;
+  font-size: 16px;
+  background: #818cf8;
+  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  font-family: "Courier New", monospace;
+  font-weight: 600;
 }
