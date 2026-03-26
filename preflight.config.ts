@@ -2,9 +2,9 @@ export default {
   url: 'http://localhost:3000',
 
   routes: {
-    include: ['/', '/dashboard'],
+    include: ['/'],
     exclude: ['/api/*', '/_next/*'],
-    maxRoutes: 2,
+    maxRoutes: 1,
   },
 
   viewports: [
@@ -14,7 +14,7 @@ export default {
   qa: {
     categories: ['visual', 'functional', 'accessibility', 'console-errors'],
     minSeverity: 'minor',
-    maxFindings: 5,
+    maxFindings: 10,
   },
 
   fix: {

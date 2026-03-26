@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import { BottomNav } from "@/components/BottomNav";
 
 export const metadata: Metadata = {
   title: "Acme Dashboard",
@@ -16,9 +14,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
+        <nav className="navbar">
+          <div className="navbar-logo">Acme</div>
+          <ul className="navbar-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
         <main>{children}</main>
-        <BottomNav />
       </body>
     </html>
   );
