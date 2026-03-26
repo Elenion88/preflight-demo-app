@@ -3,21 +3,6 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 
-const metrics = [
-  { label: "Total Users", value: "12,847", change: "+12.5%", up: true },
-  { label: "Revenue", value: "$48,295", change: "+8.2%", up: true },
-  { label: "Churn Rate", value: "3.1%", change: "+0.4%", up: false },
-  { label: "Active Sessions", value: "1,429", change: "-2.1%", up: false },
-];
-
-const tableData = [
-  { name: "Alice Johnson", email: "alice@example.com", plan: "Pro", status: "Active", spent: "$2,450" },
-  { name: "Bob Smith", email: "bob@example.com", plan: "Starter", status: "Active", spent: "$680" },
-  { name: "Carol Williams", email: "carol@example.com", plan: "Enterprise", status: "Pending", spent: "$12,800" },
-  { name: "Dave Brown", email: "dave@example.com", plan: "Pro", status: "Inactive", spent: "$1,200" },
-  { name: "Eve Davis", email: "eve@example.com", plan: "Starter", status: "Active", spent: "$340" },
-];
-
 export default function HomePage() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -27,9 +12,28 @@ export default function HomePage() {
     <>
       {/* === HERO === */}
       <section className={styles.hero}>
-        <h1>Build Faster with Acme</h1>
+        <h1 className={styles.heroTitle}>Build Faster with Acme</h1>
         <p className={styles.heroSubtitle}>The all-in-one platform for modern teams.</p>
         <button className={styles.ctaButton}>Get Started Free</button>
+      </section>
+
+      {/* === FEATURES === */}
+      <section className={styles.featuresSection}>
+        <h2>Why Teams Love Acme</h2>
+        <div className={styles.featuresGrid}>
+          <div className={styles.featureCard}>
+            <h3>Real-Time Analytics</h3>
+            <p>Track your key metrics in real-time with customizable dashboards and instant alerts.</p>
+          </div>
+          <div className={styles.featureCard}>
+            <h3>Automated Workflows</h3>
+            <p>Set up complex automation pipelines with our drag-and-drop builder. No coding required.</p>
+          </div>
+          <div className={styles.featureCard}>
+            <h3>Team Collaboration</h3>
+            <p>Built-in messaging, file sharing, and task assignment. Keep your team aligned.</p>
+          </div>
+        </div>
       </section>
 
       {/* === CONTACT FORM === */}
@@ -46,6 +50,7 @@ export default function HomePage() {
             <label htmlFor="name">Full Name</label>
             <input
               id="name"
+              name="name"
               type="text"
               placeholder="Jane Smith"
               value={name}
@@ -57,6 +62,7 @@ export default function HomePage() {
             <label htmlFor="email">Email Address</label>
             <input
               id="email"
+              name="email"
               type="email"
               placeholder="jane@example.com"
               value={email}
@@ -73,68 +79,11 @@ export default function HomePage() {
         </form>
       </section>
 
-      {/* === DASHBOARD === */}
-      <section className={styles.dashboard}>
-        <h2>Dashboard</h2>
-
-        {/* METRIC CARDS */}
-        <div className={styles.metricsGrid}>
-          {metrics.map((metric) => (
-            <div key={metric.label} className={styles.metricCard}>
-              <h3>{metric.label}</h3>
-              <div className={styles.metricValue}>{metric.value}</div>
-              <div
-                className={`${styles.metricChange} ${
-                  metric.up ? styles.metricChangeUp : styles.metricChangeDown
-                }`}
-              >
-                {metric.change} vs last month
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* DATA TABLE */}
-        <div className={styles.tableWrapper}>
-          <div className={styles.tableHeader}>
-            <h3>Recent Users</h3>
-            <button className={styles.exportButton}>Export CSV</button>
-          </div>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Plan</th>
-                <th>Status</th>
-                <th>Total Spent</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableData.map((row) => (
-                <tr key={row.email}>
-                  <td>{row.name}</td>
-                  <td>{row.email}</td>
-                  <td>{row.plan}</td>
-                  <td>
-                    <span
-                      className={`${styles.statusBadge} ${
-                        row.status === "Active"
-                          ? styles.statusActive
-                          : row.status === "Pending"
-                          ? styles.statusPending
-                          : styles.statusInactive
-                      }`}
-                    >
-                      {row.status}
-                    </span>
-                  </td>
-                  <td>{row.spent}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      {/* === BOTTOM CTA === */}
+      <section className={styles.ctaSection}>
+        <h2>Ready to get started?</h2>
+        <p>Join 10,000+ teams already using Acme.</p>
+        <button className={styles.ctaButton}>Start Free Trial</button>
       </section>
     </>
   );

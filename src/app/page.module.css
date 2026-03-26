@@ -1,23 +1,26 @@
 /* === HERO === */
 .hero {
-  background: #312e81;
+  background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);
   color: white;
-  padding: 64px 24px;
+  padding: 80px 24px;
   text-align: center;
 }
 
-.hero h1 {
+.heroTitle {
   font-size: 48px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   /* BUG: Heading is invisible — same color as background */
   color: #312e81;
 }
 
 .heroSubtitle {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 32px;
   color: #c7d2fe;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ctaButton {
@@ -30,12 +33,69 @@
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  transition: background 0.2s;
+}
+
+.ctaButton:hover {
+  background: #6366f1;
+}
+
+/* === FEATURES === */
+.featuresSection {
+  padding: 64px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.featuresSection h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #1e1e2e;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.featureCard {
+  background: white;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s;
+}
+
+.featureCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.featureCard h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1e1e2e;
+}
+
+.featureCard p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
 }
 
 /* === CONTACT FORM === */
 .formSection {
-  padding: 48px 24px;
-  max-width: 600px;
+  padding: 64px 24px;
+  max-width: 520px;
   margin: 0 auto;
 }
 
@@ -44,6 +104,7 @@
   font-weight: 700;
   margin-bottom: 24px;
   text-align: center;
+  color: #1e1e2e;
 }
 
 .contactForm {
@@ -85,11 +146,16 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  /* BUG: Button is pushed 800px to the right — off-screen and unreachable */
-  position: relative;
-  left: 800px;
   background: #6366f1;
   color: white;
+  /* BUG: Button is pushed 800px off-screen to the right */
+  position: relative;
+  left: 800px;
+  transition: background 0.2s;
+}
+
+.submitButton:hover {
+  background: #4f46e5;
 }
 
 .successMessage {
@@ -98,143 +164,22 @@
   text-align: center;
 }
 
-/* === DASHBOARD === */
-.dashboard {
-  padding: 48px 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+/* === CTA SECTION === */
+.ctaSection {
+  background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);
+  color: white;
+  text-align: center;
+  padding: 64px 24px;
 }
 
-.dashboard h2 {
+.ctaSection h2 {
   font-size: 28px;
   font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.ctaSection p {
   margin-bottom: 24px;
-}
-
-/* METRIC CARDS */
-.metricsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-@media (max-width: 768px) {
-  .metricsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.metricCard {
-  background: white;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.metricCard h3 {
-  font-size: 12px;
-  color: #888;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  font-weight: 500;
-}
-
-.metricValue {
-  font-size: 32px;
-  font-weight: 700;
-  color: #1e1e2e;
-  /* BUG: Extreme negative letter-spacing makes numbers overlap and unreadable */
-  letter-spacing: -8px;
-}
-
-.metricChange {
-  font-size: 12px;
-  margin-top: 4px;
-}
-
-.metricChangeUp {
-  color: #16a34a;
-}
-
-.metricChangeDown {
-  color: #dc2626;
-}
-
-/* DATA TABLE */
-.tableWrapper {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  overflow-x: auto;
-}
-
-.tableHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
-  border-bottom: 1px solid #eee;
-}
-
-.tableHeader h3 {
+  color: #c7d2fe;
   font-size: 18px;
-  font-weight: 600;
-}
-
-.exportButton {
-  padding: 6px 14px;
-  font-size: 13px;
-  background: #6366f1;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.table th {
-  text-align: left;
-  padding: 12px 20px;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #888;
-  font-weight: 500;
-  border-bottom: 1px solid #eee;
-}
-
-.table td {
-  padding: 12px 20px;
-  font-size: 14px;
-  border-bottom: 1px solid #f5f5f5;
-  /* BUG: Table text is nearly invisible — tiny font and near-white color */
-  font-size: 6px;
-  color: #e8e8e8;
-}
-
-.statusBadge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.statusActive {
-  background: #d4edda;
-  color: #155724;
-}
-
-.statusPending {
-  background: #fff3cd;
-  color: #856404;
-}
-
-.statusInactive {
-  background: #f8d7da;
-  color: #721c24;
 }

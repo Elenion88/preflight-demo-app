@@ -51,9 +51,11 @@ a {
   color: #ccc;
   font-size: 14px;
   padding: 8px 12px;
-  transition: color 0.2s;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
 }
 
 .navbar-links a:hover {
-  color: #818cf8;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
 }

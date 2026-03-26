@@ -2,9 +2,9 @@ export default {
   url: 'http://localhost:3000',
 
   routes: {
-    include: ['/'],
+    include: ['/', '/dashboard'],
     exclude: ['/api/*', '/_next/*'],
-    maxRoutes: 1,
+    maxRoutes: 2,
   },
 
   viewports: [
