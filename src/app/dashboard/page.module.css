@@ -118,6 +118,7 @@
   letter-spacing: 0.5px;
   margin-bottom: 8px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .metricValue {
