@@ -10,8 +10,7 @@
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 16px;
-  /* BUG: Heading is invisible — same color as background */
-  color: #312e81;
+  color: #ffffff;
 }
 
 .heroSubtitle {
