@@ -43,8 +43,6 @@ a {
   display: flex;
   gap: 24px;
   list-style: none;
-  /* BUG: Nav links are pushed off-screen to the right */
-  margin-right: -600px;
 }
 
 .navbar-links a {
