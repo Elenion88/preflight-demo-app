@@ -182,9 +182,8 @@
 .table td {
   padding: 14px 24px;
   border-bottom: 1px solid #f8f8f8;
-  /* BUG: Table text is nearly invisible — tiny font and near-white color */
-  font-size: 6px;
-  color: #e8e8e8;
+  font-size: 14px;
+  color: #333;
 }
 
 .statusBadge {
